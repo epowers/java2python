@@ -12,5 +12,6 @@ setup(name='java2python',
         'java2python.lang',
         'java2python.compiler',
         ],
+      package_data={'java2python.lang': ['Java.tokens']},
       scripts=['bin/j2py'],
       )

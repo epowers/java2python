@@ -117,9 +117,12 @@ class TypeAcceptor(object):
         """ Creates an accept function for the given factory type. """
         def acceptType(self, node, memo):
             """ Creates and returns a new template for a type. """
-            name = node.firstChildOfType(tokens.IDENT).text
-            self.variables.append(name)
-            return getattr(self.factory, ft)(name=name, parent=self)
+            try:
+                name = node.firstChildOfType(tokens.IDENT).text
+                self.variables.append(name)
+                return getattr(self.factory, ft)(name=name, parent=self)
+            except:
+                return None
         return acceptType
 
     acceptAt = makeAcceptType('at')
